@@ -45,6 +45,7 @@ func main() {
 
 	impersonatorID := flag.String("impersonator-id", "", "User ID of impersonator")
 	appClientID := flag.String("client-id", "", "Client ID of the application")
+	account := flag.String("account", "", "Account name")
 	scope := flag.String("scope", "openid name user_id nickname email picture", "OAuth scope")
 
 	flag.Parse()
@@ -54,12 +55,12 @@ func main() {
 		log.Fatalf("<user-id> argument required")
 	}
 
-	token, err := getToken("apex-inc", clientID, clientSecret)
+	token, err := getToken(*account, clientID, clientSecret)
 	if err != nil {
 		log.Fatalf("error fetching token: %s", err)
 	}
 
-	link, err := getImpersionationLink("apex-inc", userID, *impersonatorID, *appClientID, token, *scope)
+	link, err := getImpersionationLink(*account, userID, *impersonatorID, *appClientID, token, *scope)
 	if err != nil {
 		log.Fatalf("error fetching link: %s", err)
 	}
