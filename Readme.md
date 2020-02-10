@@ -6,6 +6,14 @@ exactly what your customers see.
 
 ## Installation
 
+From [gobinaries.com](https://gobinaries.com):
+
+```sh
+$ curl -sf https://gobinaries.com/tj/impersonate | sh
+```
+
+From source:
+
 ```sh
 $ go get github.com/tj/impersonate
 ```
